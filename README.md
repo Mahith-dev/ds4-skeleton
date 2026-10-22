@@ -1,84 +1,93 @@
-# DS4 Skeleton
+# DS4 Skeleton 🎮
 
-A browser-based, real-time 3D visualizer and diagnostics panel for the **DualShock 4 (PS4) controller**.
+**A little browser-based playground for the DualShock 4.**
 
-The controller is rendered as a wireframe-style 3D model. Buttons, sticks, triggers, touchpad input, gyro movement, rumble, and sound feedback are visualized where the browser and controller support them.
+DS4 Skeleton lets you see your PS4 controller come to life in a 3D view while you press buttons, move the sticks, and test the controls your browser can read. I built it as a lightweight web project, so there’s no install step or build process to deal with.
 
-## Features
+👉 **[Try the live demo](https://mahith-dev.github.io/ds4-skeleton/)**
 
-- Interactive 3D controller model with orbit and zoom controls
-- Live buttons, D-pad, analog sticks, and trigger visualization
-- Gamepad API support for standard controller input
-- Optional WebHID connection for gyro/accelerometer data and additional diagnostics
-- Stick drift, stick range, trigger, button, and touchpad diagnostics
-- Recenter and gyro recalibration controls
-- X-ray mode, rumble feedback, sound feedback, and axis flipping
-- Responsive overlay for desktop and smaller screens
+## What can it do?
 
-## Run locally
+* View an interactive 3D model of the controller, with camera orbit and zoom.
+* See button presses, D-pad input, analog sticks, and triggers update live.
+* Use the browser Gamepad API to read supported controller input.
+* Try the WebHID gyro connection for extra motion data on supported browsers and hardware.
+* Explore the diagnostic controls for sticks, triggers, buttons, and touchpad input where available.
+* Recenter or recalibrate the gyro, flip axes, and toggle X-ray, rumble, and sound options.
 
-No build step or package manager is required.
+Not every feature works on every browser or controller setup. The regular Gamepad API inputs and the extra WebHID features have different compatibility requirements.
 
-1. Download or clone this repository.
-2. Open a terminal in the project directory.
-3. Start a local static server, for example:
+## Give it a try
 
-   ```bash
-   python -m http.server 8000
-   ```
+The easiest way is to open the **[live demo](https://mahith-dev.github.io/ds4-skeleton/)** in a desktop browser and connect your controller.
 
-4. Open `http://localhost:8000` in a supported browser.
-5. Connect or pair your controller and press a button.
+For the best chance of getting the gyro features working, use a recent version of **Chrome or Edge**. When prompted, allow access to the controller. Button and stick input may work in more browsers, depending on the device and operating system.
 
-> **Important:** WebHID requires a secure context. `localhost` is supported for local development; a deployed site should use HTTPS. For the gyro connection, use a desktop Chromium-based browser such as Chrome or Edge and click **Connect gyro (WebHID)**. The ordinary Gamepad API features may work in other browsers, depending on device and browser support.
+If the page opens but a feature doesn't respond, it may be a browser or hardware limitation rather than a problem with the page.
 
-## Deploy to GitHub Pages
+## Run it on your computer
 
-This is a static website, so GitHub Pages can host it directly.
+There’s no npm install or build command needed. You can serve the files locally with Python:
 
-1. Create a GitHub repository.
-2. Upload the contents of this project, keeping the folder structure intact.
-3. In the repository, open **Settings → Pages**.
-4. Under the build/deployment settings, choose **Deploy from a branch**.
-5. Select your default branch (usually `main`) and the `/(root)` folder, then save.
-6. Wait for GitHub Pages to publish the site. Open the published HTTPS URL.
+```bash
+git clone https://github.com/mahith-dev/ds4-skeleton.git
+cd ds4-skeleton
+python -m http.server 8000
+```
 
-The site loads Three.js from cdnjs, so the browser needs an internet connection. Keep `index.html`, `assets/css/style.css`, and `assets/js/app.js` at these paths unless you update the references.
+Then open `http://localhost:8000` in your browser.
+
+If your repository has a different name or URL, update the clone command to match it.
 
 ## Controls
 
-- **Drag:** orbit the camera
-- **Mouse wheel / trackpad scroll:** zoom
-- **Connect gyro (WebHID):** request access to a supported controller and enable gyro diagnostics
-- **Recenter:** reset the current orientation reference
-- **Recalibrate:** measure the gyro's resting bias again
-- **X-ray:** toggle the model's solid surfaces
-- **flip X / Y / Z:** invert gyro axes
-- **rumble / sound:** enable or disable supported feedback
+* **Drag the scene** to rotate the camera.
+* **Scroll** to zoom in or out.
+* **Connect gyro (WebHID)** to request access to a supported controller.
+* **Recenter** to reset the current orientation reference.
+* **Recalibrate** to measure the gyro's resting bias again.
+* **X-ray** to switch the model's surface view.
+* **Flip X / Y / Z** to invert individual gyro axes.
+* **Rumble / sound** to toggle supported feedback.
 
-## Browser and hardware notes
+The exact behavior depends on which features your controller and browser expose.
 
-- A DualShock 4 is recommended; behavior can vary with controller revisions, connection method, operating system, and browser.
-- Standard button/stick visualization uses the browser Gamepad API.
-- Gyro, touch-surface diagnostics, and controller rumble depend on WebHID support and the particular device/browser combination.
-- Grant device permission when prompted. If a feature is unavailable, the page should still be usable for the supported Gamepad API inputs.
-- Three.js is loaded from cdnjs, so first load requires internet access.
-
-## Project structure
+## How the project is organised
 
 ```text
 ds4-skeleton/
 ├── index.html
 ├── README.md
 ├── .gitignore
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── app.js
-└── LICENSE (optional; add one if you want to specify reuse terms)
+└── assets/
+    ├── css/
+    │   └── style.css
+    └── js/
+        └── app.js
 ```
 
-## Credits and licensing
+* `index.html` contains the page structure.
+* `assets/css/style.css` holds the styling.
+* `assets/js/app.js` contains the visualizer logic.
 
-This project uses [Three.js](https://threejs.org/) via cdnjs. Review the relevant project and library terms before redistributing. No license is included by default; add one if you want to explicitly grant others permission to reuse or modify this project.
+The page loads Three.js from a CDN, so you’ll need an internet connection when opening it for the first time.
+
+## A couple of things to know
+
+* WebHID is only available in supported browsers and secure contexts. The GitHub Pages demo uses HTTPS, and `localhost` works for local development.
+* Controller behavior can vary with the controller revision, USB or Bluetooth connection, operating system, and browser.
+* This project is a small experiment and diagnostic visualizer, not a guarantee that every DualShock 4 feature can be accessed from the browser.
+
+## Built with
+
+* HTML, CSS, and JavaScript
+* [Three.js](https://threejs.org/) for the 3D view
+* Browser Gamepad API and WebHID where supported
+
+## Feedback
+
+If you try it and find something broken, or have an idea for an improvement, feel free to open an issue in the repository. Contributions and suggestions are welcome.
+
+---
+
+Made by [mahith-dev](https://github.com/mahith-dev).
