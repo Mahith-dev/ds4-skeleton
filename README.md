@@ -1,10 +1,12 @@
-# DS4 Skeleton 🎮
+DS4 Skeleton 🎮
 
-**A little browser-based playground for the DualShock 4.**
+A little browser-based playground for the DualShock 4.
 
-DS4 Skeleton lets you see your PS4 controller come to life in a 3D view while you press buttons, move the sticks, and test the controls your browser can read. I built it as a lightweight web project, so there’s no install step or build process to deal with.
+See your PS4 controller come to life in 3D. Press buttons, move the sticks, and experiment with real-time controller input, all in your browser.
 
-👉 **[Try the live demo](https://mahith-dev.github.io/ds4-skeleton/)**
+<p align="center"> <img src="assets/demo.gif" alt="DS4 Skeleton showing the 3D controller visualizer responding to controller input" width="850"> </p>
+
+<p align="center"> <a href="https://mahith-dev.github.io/ds4-skeleton/"><strong>▶ Try the live demo</strong></a> </p>
 
 ## What can it do?
 
