@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="A real-time DualShock 4 controller visualizer and diagnostics tool with gyro, touchpad, buttons, sticks, rumble, and sound feedback.">
+  <title>DS4 Skeleton — Controller Visualizer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <canvas id="c" aria-label="Interactive 3D DualShock 4 controller visualizer"></canvas>
+
+  <div id="ui">
+    <h1>DS4 / DIAGNOSTICS</h1>
+    <div id="st" role="status" aria-live="polite">Plug in or pair a controller, then press a button. Click Connect for gyro.</div>
+    <button id="bc" type="button">Connect gyro (WebHID)</button>
+    <button id="br" type="button">Recenter</button>
+    <button id="bk" type="button">Recalibrate</button>
+    <button id="xr" type="button">X-ray</button>
+    <br>
+    <label><input type="checkbox" id="fx"> flip X</label>
+    <label><input type="checkbox" id="fy"> flip Y</label>
+    <label><input type="checkbox" id="fz"> flip Z</label>
+    <br>
+    <label><input type="checkbox" id="rb" checked> rumble</label>
+    <label><input type="checkbox" id="sn" checked> sound</label>
+  </div>
+
+  <div id="fps" aria-live="off"></div>
+  <div id="dg"></div>
+  <div id="hint">drag: orbit · wheel: zoom</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
